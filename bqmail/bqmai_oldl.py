@@ -15,7 +15,7 @@
 
 def Usage():
     print('Usage:')
-    print('python bqmail.py -Nnetwork -Sstation -b -Bsec_begin/sec_end [-Cchannel] [-Plat/lon/phase] [-Llocation] [-cdatetimefile] [-Fformat] [-Mmagmin/magmax] head.cfg')
+    print('python bqmai_oldl.py -Nnetwork -Sstation -b -Bsec_begin/sec_end [-Cchannel] [-Plat/lon/phase] [-Llocation] [-cdatetimefile] [-Fformat] [-Mmagmin/magmax] head.cfg')
     print('-N   -- Network.')
     print('-S   -- Station.')
     print('-b   -- Limit to events occurring on or after the specified start time.\n'
@@ -36,12 +36,17 @@ def Usage():
 
 
 import datetime
-import os, re
-import sys, getopt
+import getopt
+import os
+import re
+import sys
 import time
+
 from obspy import taup
-import distaz
-from util import sendmail,generatemsg
+
+from bqmail import distaz
+from bqmail.util import sendmail, generatemsg
+
 try:
     import configparser
     config = configparser.ConfigParser()

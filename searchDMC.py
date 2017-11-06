@@ -11,15 +11,15 @@
 #   2015/09/26
 #
 
-import distaz, math
+from bqmail import distaz
+
 try:
     import urllib.request as rq
 except:
     import urllib as rq
-import os
 import re
 import sys, getopt
-import glob
+
 
 def Usage():
     print('Usage: python searchDMC.py -NNetwork -Sstation -Rlon1/lon2/lat1/lat2 -Dlat/lon/dis1/dis2 -Yyear1/mon1/day1/year2/mon2/day2 -Cchannel -K -G')
@@ -139,7 +139,7 @@ for info in find_re.findall(html):
     yrange1 = sta_info[-5]
     yrange2 = sta_info[-4]
     if not islalo and lat_lon != '':
-        delta = distaz.distaz(float(lat),float(lon),float(stlat),float(stlon))
+        delta = distaz.distaz(float(lat), float(lon), float(stlat), float(stlon))
         if dis1 < delta.delta < dis2:
             stations.append([netname, staname, float(stlat), float(stlon), yrange1, yrange2])           
     else:

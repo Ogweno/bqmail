@@ -9,11 +9,13 @@
 
 
 import datetime
-import os, re
-import sys, getopt
+import getopt
+import os
+import sys
 import time
-import subprocess
-from util import generatemsg, sendmail
+
+from bqmail.util import generatemsg, sendmail
+
 try:
     import configparser
     config = configparser.ConfigParser()
